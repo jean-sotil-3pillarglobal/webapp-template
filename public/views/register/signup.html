@@ -1,0 +1,40 @@
+<!-- <div ng-show="registerForm.firstname.$invalid">Debes de ingresar tu nombre</div> -->
+<h2>Ingrese su información:</h2>
+<form action="" ng-submit="validateForm" name="registerForm">
+	<fieldset>
+		<input type="text" class="form-control"
+			name="firstname" 
+			placeholder="Nombre" 
+			ng-model="user.firstname" 
+			ng-required="true">
+		<input type="text" class="form-control"
+			name="lastname" 
+			placeholder="Apellidos" 
+			ng-model="user.lastname" 
+			ng-required="true">
+		<input type="email" class="form-control"
+			name="email" 
+			placeholder="Correo electronico" 
+			ng-model="user.email" 
+			ng-required="true">
+		<input type="password" class="form-control"
+			name="password1" 
+			placeholder="Contraseña" 
+			ng-model="user.password1" 
+			ng-required="true">
+		<input type="password" class="form-control"
+			name="password2" 
+			placeholder="Contraseña" 
+			ng-model="user.password2" 
+			ng-required="true">
+	</fieldset>
+	<button class="btn btn-default" type="submit">Registrar</button>
+</form>
+
+
+<div ng-repeat="movie in mv.movies">
+	{{movie.name}}
+	<rating-component value="movie.rating"> 
+		<span class="glyphicon glyphicon-star"></span>
+	</rating-component>
+</div>

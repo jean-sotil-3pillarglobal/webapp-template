@@ -1,0 +1,12 @@
+require.config({paths:{libs:"./js/libs"},nodeRequire:require});
+var app=angular.module("myApp",["ngRoute"]);!function(){app.config(["$routeProvider","$locationProvider",function(e,r){e.when("/register",{templateUrl:"../views/register/register.html",controller:"RegisterController"}).when("/admin",{templateUrl:"../views/admin/home.html",controller:"AdminController"}).when("/profile",{templateUrl:"../views/profile/home.html",controller:"ProfileController"}),r.html5Mode(!0)}])}();
+!function(){app.controller("AdminController",["$scope",function(n){n.name="JP"}])}();
+!function(){app.controller("HeaderController",["$scope","constantsService",function(e,o){e.app_title=o.APP_TITLE,e.message="Hello!",e.display=function(){toastr.error("Are you the 6 fingered man?")}}])}();
+!function(){app.controller("ProfileController",["$scope",function(n){n.name="jean"}])}();
+!function(){app.controller("RegisterController",["$scope",function(o){}])}();
+!function(){var a={APP_TITLE:"My app",APP_DESCRIPTION:"Great for learning Angular features.",APP_VERSION:"1.0"};app.constant("constantsService",a)}();
+!function(){function m(m,a){var n=function(){return m.log("loading books."),[{name:"dummy 1",rating:4},{name:"dummy 2",rating:3},{name:"dummy 3",rating:2}]},e=function(){return[{name:"dummy 1",lastname:"lastname dummy 1"},{name:"dummy 1",lastname:"lastname dummy 2"},{name:"dummy 1",lastname:"lastname dummy 3"}]};return{getAllMovies:n,getAllReaders:e}}m.$inject=["loggerService","$http"],app.factory("dataService",m)}();
+!function(){function o(){var o=function(o){console.log(o)};return{log:o}}app.factory("loggerService",o)}();
+!function(){function n(n){mv=this,mv.$onInit=function(){}}app.component("globalHeader",{templateUrl:"./views/global/header.html",bindings:{},transclude:!1,controllerAs:"mv",controller:["$scope",n]})}();
+!function(){function n(n){mv=this,mv.$onInit=function(){mv.entries=new Array(mv.value)}}app.component("ratingComponent",{templateUrl:"./views/register/rating.html",bindings:{value:"="},transclude:!0,controllerAs:"mv",controller:["$scope",n]})}();
+!function(){function e(e,t){var n=this;n.$onInit=function(){n.message="Message from component",n.movies=t.getAllMovies()}}app.component("signUp",{templateUrl:"./views/register/signup.html",controllerAs:"mv",controller:["$http","dataService",e]})}();
